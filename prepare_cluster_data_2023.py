@@ -168,39 +168,35 @@ def main(input_file,folder):
                 if prot_cluster[index] == i:
                     prot_test.append(list_unique_prots[index])
 
-        # novel_pair setting
-        train_dataframe = pd.DataFrame() 
-        test_dataframe = pd.DataFrame()
-        # novel_pair
-        for i in tqdm(range(len(data_frame))):
-            if data_frame.iloc[i]['smiles'] in comp_train and data_frame.iloc[i]['sequence'] in prot_train:
-                train_dataframe = train_dataframe.append(data_frame.iloc[i], ignore_index = True)
-            if data_frame.iloc[i]['smiles'] in comp_test and data_frame.iloc[i]['sequence'] in prot_test:
-                test_dataframe = test_dataframe.append(data_frame.iloc[i], ignore_index = True)
+       # novel_pair
+        # FIX: Dùng boolean indexing thay vì vòng lặp append (nhanh hơn và sửa lỗi pandas 2.0)
+        mask_comp_train = data_frame['smiles'].isin(comp_train)
+        mask_prot_train = data_frame['sequence'].isin(prot_train)
+        mask_comp_test = data_frame['smiles'].isin(comp_test)
+        mask_prot_test = data_frame['sequence'].isin(prot_test)
+
+        train_dataframe = data_frame[mask_comp_train & mask_prot_train].copy()
+        test_dataframe = data_frame[mask_comp_test & mask_prot_test].copy()
         val_dataframe = train_dataframe[headers].sample(frac = 0.2)
         train_datafame_after = train_dataframe.loc[train_dataframe.index.difference(val_dataframe.index), ]
         save_csv(train_datafame_after, test_dataframe, val_dataframe, headers, folder, 'novel_pair',fold)
        
         # newcomp
-        train_dataframe = pd.DataFrame() 
-        test_dataframe = pd.DataFrame()
-        for i in tqdm(range(len(data_frame))):
-            if data_frame.iloc[i]['smiles'] in comp_train:
-                train_dataframe = train_dataframe.append(data_frame.iloc[i], ignore_index = True)
-            else:
-                test_dataframe = test_dataframe.append(data_frame.iloc[i], ignore_index = True)
+        # newcomp
+        # FIX: Sửa lỗi append
+        mask_train = data_frame['smiles'].isin(comp_train)
+        train_dataframe = data_frame[mask_train].copy()
+        test_dataframe = data_frame[~mask_train].copy() # Dấu ~ nghĩa là phủ định (else)
         val_dataframe = train_dataframe[headers].sample(frac = 0.2)
         train_datafame_after = train_dataframe.loc[train_dataframe.index.difference(val_dataframe.index), ]
         save_csv(train_datafame_after, test_dataframe, val_dataframe, headers, folder, 'novel_comp',fold)        
         
         # newprot
-        train_dataframe = pd.DataFrame() 
-        test_dataframe = pd.DataFrame()
-        for i in tqdm(range(len(data_frame))):
-            if data_frame.iloc[i]['sequence'] in prot_train:
-                train_dataframe = train_dataframe.append(data_frame.iloc[i], ignore_index = True)
-            else:
-                test_dataframe = test_dataframe.append(data_frame.iloc[i], ignore_index = True)        
+        # newprot
+        # FIX: Sửa lỗi append
+        mask_train = data_frame['sequence'].isin(prot_train)
+        train_dataframe = data_frame[mask_train].copy()
+        test_dataframe = data_frame[~mask_train].copy()        
         val_dataframe = train_dataframe[headers].sample(frac = 0.2)
         train_datafame_after = train_dataframe.loc[train_dataframe.index.difference(val_dataframe.index), ]
         save_csv(train_datafame_after, test_dataframe, val_dataframe, headers, folder, 'novel_prot', fold) 
