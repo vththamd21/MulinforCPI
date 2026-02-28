@@ -16,7 +16,8 @@ class makedisdataset():
         if not os.path.exists(output_folder): os.makedirs(output_folder)
         self.protein_features_dist = []
         self.data = data
-
+        self.protein_length = protein_length
+        
     def make_distance_matrix(self):
         files = os.listdir(self.input_folder)
         pdb_files = [file for file in files if file.endswith('.pdb')]
