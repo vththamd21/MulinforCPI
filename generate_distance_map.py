@@ -20,11 +20,11 @@ class makedisdataset():
     def make_distance_matrix(self):
         files = os.listdir(self.input_folder)
         pdb_files = [file for file in files if file.endswith('.pdb')]
-        for index, file in enumerate(tqdm(pdb_files)):
-            struct = strucio.load_structure(os.path.join(self.input_folder,'{}_result.pdb'.format(index)))
+        for file in tqdm(pdb_files):
+            struct = strucio.load_structure(os.path.join(self.input_folder, file))
             CA_coords = [ atom.coord for atom in struct if atom.atom_name == 'CA' ]
 
-            dist_matrix = np.zeros((protein_length, protein_length), np.float64)
+            dist_matrix = np.zeros((self.protein_length, self.protein_length), np.float64)
             for row, res1 in enumerate(CA_coords):
                 for col, res2 in enumerate(CA_coords):
                     try:
@@ -35,7 +35,7 @@ class makedisdataset():
         torch.save(torch.from_numpy(np.array(self.protein_features_dist)),
          os.path.join(self.output_folder,'{}_dis.pt').format(self.data))
 
-def main(input_folder, output_folder, data_name = data_name):
+def main(input_folder, output_folder, data_name):
     makedataset = makedisdataset(input_folder = input_folder,\
         output_folder = output_folder, data = data_name)
     makedataset.make_distance_matrix()
