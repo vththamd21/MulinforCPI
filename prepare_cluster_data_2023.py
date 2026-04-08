@@ -17,7 +17,7 @@ import os
 import sys 
 from sklearn.metrics import jaccard_score, silhouette_score , accuracy_score
 
-
+#biến chuỗi aa thành 1 giá trị số
 tokenizer = TAPETokenizer(vocab='unirep')
 
 def take_sequencefp(sequence):

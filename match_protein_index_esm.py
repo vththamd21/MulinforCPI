@@ -48,4 +48,4 @@ if __name__ == '__main__':
     output_folder = str(sys.argv[2])
     prot_dict = str(sys.argv[3])
     data_name = str(sys.argv[4])
-    main(data_folder, out_folder, prot_dict, data_name)
+    main(data_folder, output_folder, prot_dict, data_name)

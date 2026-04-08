@@ -9,29 +9,29 @@ from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
 from ogb.utils import smiles2graph
 
 from commons.utils import seed_all, get_random_indices, TENSORBOARD_FUNCTIONS, move_to_device
-from datasets.ZINC_dataset import ZINCDataset
-from datasets.bace_geomol_feat import BACEGeomol
-from datasets.bace_geomol_featurization_of_qm9 import BACEGeomolQM9Featurization
-from datasets.bace_geomol_random_split import BACEGeomolRandom
-from datasets.bbbp_geomol_feat import BBBPGeomol
-from datasets.bbbp_geomol_featurization_of_qm9 import BBBPGeomolQM9Featurization
-from datasets.bbbp_geomol_random_split import BBBPGeomolRandom
-from datasets.esol_geomol_feat import ESOLGeomol
-from datasets.esol_geomol_featurization_of_qm9 import ESOLGeomolQM9Featurization
-from datasets.file_loader_drugs import FileLoaderDrugs
-from datasets.file_loader_qm9 import FileLoaderQM9
-from datasets.geom_drugs_dataset import GEOMDrugs
-from datasets.geom_qm9_dataset import GEOMqm9
-from datasets.geomol_geom_qm9_dataset import QM9GeomolFeatDataset
-from datasets.inference_dataset import InferenceDataset
-from datasets.lipo_geomol_feat import LIPOGeomol
-from datasets.lipo_geomol_featurization_of_qm9 import LIPOGeomolQM9Featurization
-from datasets.ogbg_dataset_extension import OGBGDatasetExtension
-from datasets.qm9_dataset_geomol_conformers import QM9DatasetGeomolConformers
-from datasets.qm9_dataset_rdkit_conformers import QM9DatasetRDKITConformers
+from local_datasets.ZINC_dataset import ZINCDataset
+from local_datasets.bace_geomol_feat import BACEGeomol
+from local_datasets.bace_geomol_featurization_of_qm9 import BACEGeomolQM9Featurization
+from local_datasets.bace_geomol_random_split import BACEGeomolRandom
+from local_datasets.bbbp_geomol_feat import BBBPGeomol
+from local_datasets.bbbp_geomol_featurization_of_qm9 import BBBPGeomolQM9Featurization
+from local_datasets.bbbp_geomol_random_split import BBBPGeomolRandom
+from local_datasets.esol_geomol_feat import ESOLGeomol
+from local_datasets.esol_geomol_featurization_of_qm9 import ESOLGeomolQM9Featurization
+from local_datasets.file_loader_drugs import FileLoaderDrugs
+from local_datasets.file_loader_qm9 import FileLoaderQM9
+from local_datasets.geom_drugs_dataset import GEOMDrugs
+from local_datasets.geom_qm9_dataset import GEOMqm9
+from local_datasets.geomol_geom_qm9_dataset import QM9GeomolFeatDataset
+from local_datasets.inference_dataset import InferenceDataset
+from local_datasets.lipo_geomol_feat import LIPOGeomol
+from local_datasets.lipo_geomol_featurization_of_qm9 import LIPOGeomolQM9Featurization
+from local_datasets.ogbg_dataset_extension import OGBGDatasetExtension
+from local_datasets.qm9_dataset_geomol_conformers import QM9DatasetGeomolConformers
+from local_datasets.qm9_dataset_rdkit_conformers import QM9DatasetRDKITConformers
 
-from datasets.qm9_geomol_featurization import QM9GeomolFeaturization
-from datasets.qmugs_dataset import QMugsDataset
+from local_datasets.qm9_geomol_featurization import QM9GeomolFeaturization
+from local_datasets.qmugs_dataset import QMugsDataset
 from models.geomol_mpnn import GeomolGNNWrapper
 from train import load_model
 from trainer.byol_trainer import BYOLTrainer
@@ -49,15 +49,15 @@ from trainer.self_supervised_alternating_trainer import SelfSupervisedAlternatin
 from trainer.self_supervised_trainer import SelfSupervisedTrainer
 
 import yaml
-from datasets.custom_collate import *  # do not remove
+from local_datasets.custom_collate import *  # do not remove
 from models import *  # do not remove
 from torch.nn import *  # do not remove
 from torch.optim import *  # do not remove
 from commons.losses import *  # do not remove
 from torch.optim.lr_scheduler import *  # do not remove
-from datasets.samplers import *  # do not remove
+from local_datasets.samplers import *  # do not remove
 
-from datasets.qm9_dataset import QM9Dataset
+from local_datasets.qm9_dataset import QM9Dataset
 from torch.utils.data import DataLoader, Subset
 
 from trainer.metrics import QM9DenormalizedL1, QM9DenormalizedL2, \
@@ -67,7 +67,7 @@ from trainer.metrics import QM9DenormalizedL1, QM9DenormalizedL2, \
     NegativeSimilarityMultiplePositivesSeparate2d, OGBEvaluator, PearsonR, PositiveProb, NegativeProb, \
     Conformer2DVariance, Conformer3DVariance, PCQM4MEvaluatorWrapper
 from trainer.trainer_cpi import Trainer
-from datasets.cus_dataset_cpi_processed1 import CusDatasetCPI
+from local_datasets.cus_dataset_cpi_processed1 import CusDatasetCPI
 from tqdm import tqdm
 # turn on for debugging C code like Segmentation Faults
 import faulthandler

@@ -1,5 +1,5 @@
 import os
-from datasets.cus_dataset_cpi_processed3 import CusDatasetCPI
+from local_datasets.cus_dataset_cpi_processed3 import CusDatasetCPI
 import biotite.structure as struc
 import biotite.structure.io as strucio
 # turn on for debugging C code like Segmentation Faults
