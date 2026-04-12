@@ -8,8 +8,8 @@ from torch.nn import functional as F
 import torch.nn as nn
 
 from commons.losses import cov_loss, uniformity_loss
-from datasets.geom_drugs_dataset import GEOMDrugs
-from datasets.qm9_dataset import QM9Dataset
+from local_datasets.geom_drugs_dataset import GEOMDrugs
+from local_datasets.qm9_dataset import QM9Dataset
 from lifelines.utils import concordance_index
 
 class C_index(nn.Module):
