@@ -1,3 +1,8 @@
+import collections
+import collections.abc
+for type_name in collections.abc.__all__:
+    setattr(collections, type_name, getattr(collections.abc, type_name))
+
 import os
 from local_datasets.cus_dataset_cpi_processed3 import CusDatasetCPI
 import biotite.structure as struc
