@@ -94,5 +94,5 @@ model_parameters:
 
 
 
-data_path: '/ssd0/quang/dti2d/dataset/cluster_validation_dif/davis_processed'
+data_path: '/kaggle/input/datasets/vpchung/compound'
 result_file: 'novelpairlr02_100_10'
