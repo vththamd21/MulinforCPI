@@ -94,5 +94,5 @@ model_parameters:
 
 
 
-data_path: '/kaggle/input/datasets/vpchung/compound'
+data_path: '/kaggle/input/datasets/anhnguyenvip123/compound'
 result_file: 'novelpairlr02_100_10'
