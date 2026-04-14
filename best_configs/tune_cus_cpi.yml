@@ -12,7 +12,7 @@ transfer_layers:
 exclude_from_transfer:
   - batch_norm
 
-pretrain_checkpoint: runs/PNA/best_checkpoint_35epochs.pt
+pretrain_checkpoint: kaggle/working/MulinforCPI/runs/PNA/best_checkpoint_35epochs.pt
 num_epochs: 100
 batch_size: 100
 log_iterations: 30
