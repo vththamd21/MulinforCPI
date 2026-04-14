@@ -10,7 +10,8 @@ import os
 import re
 import sys
 from icecream import install
-from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
+from ogb.lsc.pcqm4m_dgl import DglPCQM4MDataset
+from ogb.lsc import PCQM4MEvaluator
 from ogb.utils import smiles2graph
 
 from commons.utils import seed_all, get_random_indices, TENSORBOARD_FUNCTIONS, move_to_device
