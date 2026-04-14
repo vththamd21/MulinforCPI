@@ -203,7 +203,8 @@ def load_model(args, data, device):
                                        **args.model_parameters)
     if args.pretrain_checkpoint:
         # get arguments used during pretraining
-        with open(os.path.join(os.path.dirname(args.pretrain_checkpoint), 'train_arguments.yaml'), 'r') as arg_file:
+        # with open(os.path.join(os.path.dirname(args.pretrain_checkpoint), 'train_arguments.yaml'), 'r') as arg_file:
+        with open('/kaggle/working/MulinforCPI/runs/PNA/train_arguments.yaml', 'r') as arg_file:
             pretrain_dict = yaml.load(arg_file, Loader=yaml.FullLoader)
         pretrain_args = argparse.Namespace()
         pretrain_args.__dict__.update(pretrain_dict)
