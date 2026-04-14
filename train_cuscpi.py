@@ -266,7 +266,7 @@ def train_cpi(args,folder,result_file,freeze):
                        tensorboard_functions=tensorboard_functions,
                        scheduler_step_per_batch=args.scheduler_step_per_batch)
     
-    val_metrics = trainer.train(train_loader, val_loader, test_loader)
+    val_metrics = trainer.train(train_loader, val_loader)
 
     predictions_re = []
     labels = []
