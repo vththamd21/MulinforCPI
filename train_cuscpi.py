@@ -192,6 +192,7 @@ def parse_arguments():
 def train_cpi(args,folder,result_file,freeze):
     seed_all(args.seed)
     device = torch.device("cuda:0" if torch.cuda.is_available() and args.device == 'cuda' else "cpu")
+    print(f'device is {device}')
     metrics_dict = {'mse':MSE(),
                     'ci': C_index(),
                     'rsquared': Rsquared(),
