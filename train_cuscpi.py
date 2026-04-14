@@ -324,10 +324,10 @@ if __name__ == '__main__':
     project_name = args.result_file + time_ex
     # run = wandb.init(project=project_name)
     folder = str(args.data_path)
-    tasks = os.listdir(folder)
+    # tasks = os.listdir(folder)
     for freeze in [0.95]:
-        for task in tasks:
-            data_dir = os.path.join(folder,task)
-            train_cpi(args,folder=data_dir,result_file=task, freeze = freeze)
+    # for task in tasks:
+        # data_dir = os.path.join(folder,task)
+        train_cpi(args,folder=folder,result_file='non_task', freeze = freeze)
 
     # run.finish()
