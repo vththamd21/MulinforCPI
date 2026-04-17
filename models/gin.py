@@ -4,14 +4,12 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from dgl.nn.pytorch import SumPooling
 from ogb.graphproppred.mol_encoder import AtomEncoder, BondEncoder
-
 
 import torch
 import torch.nn as nn
 
-from dgl.nn.pytorch import SumPooling, AvgPooling, MaxPooling, GlobalAttentionPooling, Set2Set
+from dgl.nn.pytorch.glob import SumPooling, AvgPooling, MaxPooling, GlobalAttentionPooling, Set2Set
 
 
 class OGBGNN(nn.Module):
