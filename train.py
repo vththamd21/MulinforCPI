@@ -5,7 +5,7 @@ import os
 import re
 
 from icecream import install
-from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
+#from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
 from ogb.utils import smiles2graph
 
 from commons.utils import seed_all, get_random_indices, TENSORBOARD_FUNCTIONS

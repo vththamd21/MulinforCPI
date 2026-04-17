@@ -10,7 +10,7 @@ import os
 import re
 import sys
 from icecream import install
-from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
+#from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
 from ogb.utils import smiles2graph
 
 from commons.utils import seed_all, get_random_indices, TENSORBOARD_FUNCTIONS, move_to_device
@@ -209,7 +209,7 @@ def train_cpi(args,folder,result_file,freeze):
                     'ogbg-molsider': OGBEvaluator(d_name='ogbg-molsider', metric='rocauc'),
                     'ogbg-molfreesolv': OGBEvaluator(d_name='ogbg-molfreesolv', metric='rmse'),
                     'ogbg-molesol': OGBEvaluator(d_name='ogbg-molesol', metric='rmse'),
-                    'pcqm4m': PCQM4MEvaluatorWrapper(),
+                    #'pcqm4m': PCQM4MEvaluatorWrapper(),
                     'conformer_3d_variance': Conformer3DVariance(),
                     'conformer_2d_variance': Conformer2DVariance(),
                     'positive_similarity': PositiveSimilarity(),
