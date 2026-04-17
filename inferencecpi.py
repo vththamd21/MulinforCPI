@@ -5,7 +5,7 @@ import os
 import re
 
 from icecream import install
-from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
+#from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
 from ogb.utils import smiles2graph
 
 from commons.utils import seed_all, get_random_indices, TENSORBOARD_FUNCTIONS, move_to_device
@@ -65,7 +65,7 @@ from trainer.metrics import QM9DenormalizedL1, QM9DenormalizedL2, \
     PositiveSimilarity, ContrastiveAccuracy, TrueNegativeRate, TruePositiveRate, Alignment, Uniformity, \
     BatchVariance, DimensionCovariance, MAE, PositiveSimilarityMultiplePositivesSeparate2d, \
     NegativeSimilarityMultiplePositivesSeparate2d, OGBEvaluator, PearsonR, PositiveProb, NegativeProb, \
-    Conformer2DVariance, Conformer3DVariance, PCQM4MEvaluatorWrapper
+    Conformer2DVariance, Conformer3DVariance
 from trainer.trainer_cpi import Trainer
 from local_datasets.cus_dataset_cpi_processed1 import CusDatasetCPI
 from tqdm import tqdm
@@ -185,7 +185,7 @@ def inference(args):
                     'ogbg-molsider': OGBEvaluator(d_name='ogbg-molsider', metric='rocauc'),
                     'ogbg-molfreesolv': OGBEvaluator(d_name='ogbg-molfreesolv', metric='rmse'),
                     'ogbg-molesol': OGBEvaluator(d_name='ogbg-molesol', metric='rmse'),
-                    'pcqm4m': PCQM4MEvaluatorWrapper(),
+                    #'pcqm4m': PCQM4MEvaluatorWrapper(),
                     'conformer_3d_variance': Conformer3DVariance(),
                     'conformer_2d_variance': Conformer2DVariance(),
                     'positive_similarity': PositiveSimilarity(),

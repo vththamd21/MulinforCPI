@@ -2,7 +2,7 @@ from typing import Union
 
 import torch
 from ogb.graphproppred import Evaluator
-from ogb.lsc import PCQM4MEvaluator
+#from ogb.lsc import PCQM4MEvaluator
 from torch import Tensor
 from torch.nn import functional as F
 import torch.nn as nn
@@ -135,17 +135,17 @@ class OGBEvaluator(nn.Module):
         return torch.tensor(self.evaluator.eval(input_dict)[self.metric])
 
 
-class PCQM4MEvaluatorWrapper(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.evaluator = PCQM4MEvaluator()
-        self.val_only = False
+# class PCQM4MEvaluatorWrapper(nn.Module):
+#     def __init__(self):
+#         super().__init__()
+#         self.evaluator = PCQM4MEvaluator()
+#         self.val_only = False
 
-    def forward(self, preds, targets):
-        if preds.shape[1] != 1:
-            return torch.tensor(float('NaN'))
-        input_dict = {"y_true": targets.long().squeeze(), "y_pred": preds.squeeze()}
-        return torch.tensor(self.evaluator.eval(input_dict)['mae'])
+#     def forward(self, preds, targets):
+#         if preds.shape[1] != 1:
+#             return torch.tensor(float('NaN'))
+#         input_dict = {"y_true": targets.long().squeeze(), "y_pred": preds.squeeze()}
+#         return torch.tensor(self.evaluator.eval(input_dict)['mae'])
 
 
 class Rsquared(nn.Module):

@@ -5,7 +5,7 @@ import os
 import re
 
 from icecream import install
-#from ogb.lsc import DglPCQM4MDataset, PCQM4MEvaluator
+from ogb.lsc import DglPCQM4Mv2Dataset, #PCQM4MEvaluator
 from ogb.utils import smiles2graph
 
 from commons.utils import seed_all, get_random_indices, TENSORBOARD_FUNCTIONS
@@ -63,7 +63,7 @@ from trainer.metrics import QM9DenormalizedL1, QM9DenormalizedL2, \
     PositiveSimilarity, ContrastiveAccuracy, TrueNegativeRate, TruePositiveRate, Alignment, Uniformity, \
     BatchVariance, DimensionCovariance, MAE, PositiveSimilarityMultiplePositivesSeparate2d, \
     NegativeSimilarityMultiplePositivesSeparate2d, OGBEvaluator, PearsonR, PositiveProb, NegativeProb, \
-    Conformer2DVariance, Conformer3DVariance, PCQM4MEvaluatorWrapper
+    Conformer2DVariance, Conformer3DVariance
 from trainer.trainer import Trainer
 # turn on for debugging C code like Segmentation Faults
 import faulthandler
@@ -387,7 +387,7 @@ def train_qm9_geomol_featurization(args, device, metrics_dict):
     return val_metrics
 
 def train_pcqm4m(args, device, metrics_dict):
-    dataset = DglPCQM4MDataset(smiles2graph=smiles2graph)
+    dataset = DglPCQM4Mv2Dataset(smiles2graph=smiles2graph)
     split_idx = dataset.get_idx_split()
     split_idx["train"] = split_idx["train"][:args.num_train]
     collate_function = globals()[args.collate_function] if args.collate_params == {} else globals()[
