@@ -2,10 +2,19 @@ import collections
 import collections.abc
 for type_name in collections.abc.__all__:
     setattr(collections, type_name, getattr(collections.abc, type_name))
-    
+
 import os
 os.environ['DGLBACKEND'] = 'pytorch'
-
+# === THỦ THUẬT BỎ QUA LỖI GRAPHBOLT TRÊN KAGGLE ===
+import sys, types
+m = types.ModuleType('torchdata')
+sys.modules['torchdata'] = m
+m.datapipes = types.ModuleType('torchdata.datapipes')
+sys.modules['torchdata.datapipes'] = m.datapipes
+m.datapipes.iter = types.ModuleType('torchdata.datapipes.iter')
+sys.modules['torchdata.datapipes.iter'] = m.datapipes.iter
+m.datapipes.iter.IterDataPipe = object
+# ===================================================
 import argparse
 import concurrent.futures
 import copy
